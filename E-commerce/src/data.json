@@ -1,0 +1,215 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Bifi",
+        "image": "/img/images-produits/bifi.jpg",
+        "price": 2.99,
+        "quantity": 120
+      },
+      {
+        "id": 2,
+        "name": "Champagne Moutet",
+        "image": "/img/images-produits/champagne-moutet.jpg",
+        "price": 55.00,
+        "quantity": 30
+      },
+      {
+        "id": 3,
+        "name": "Delirium",
+        "image": "/img/images-produits/delirium.jpg",
+        "price": 3.49,
+        "quantity": 70
+      },
+      {
+        "id": 4,
+        "name": "Mars",
+        "image": "/img/images-produits/mars.png",
+        "price": 1.29,
+        "quantity": 150
+      },
+      {
+        "id": 5,
+        "name": "Salami",
+        "image": "/img/images-produits/salami.jpg",
+        "price": 4.50,
+        "quantity": 45
+      },
+      {
+        "id": 6,
+        "name": "Boost",
+        "image": "/img/images-produits/boost.png",
+        "price": 2.25,
+        "quantity": 60
+      },
+      {
+        "id": 7,
+        "name": "Château Lafitte",
+        "image": "/img/images-produits/chateau-lafitte.jpg",
+        "price": 120.00,
+        "quantity": 15
+      },
+      {
+        "id": 8,
+        "name": "Heineken Small",
+        "image": "/img/images-produits/heineken-small.jpg",
+        "price": 5.99,
+        "quantity": 80
+      },
+      {
+        "id": 9,
+        "name": "Redbull Original",
+        "image": "/img/images-produits/redbill-original.jpg",
+        "price": 2.10,
+        "quantity": 100
+      },
+      {
+        "id": 10,
+        "name": "Bounty",
+        "image": "/img/images-produits/bounty.png",
+        "price": 1.79,
+        "quantity": 110
+      },
+      {
+        "id": 11,
+        "name": "Coca Double",
+        "image": "/img/images-produits/coca-double.jpg",
+        "price": 1.60,
+        "quantity": 200
+      },
+      {
+        "id": 12,
+        "name": "Kamel",
+        "image": "/img/images-produits/kamel.jpg",
+        "price": 6.50,
+        "quantity": 40
+      },
+      {
+        "id": 13,
+        "name": "Redbull Light",
+        "image": "/img/images-produits/redbull-light.jpg",
+        "price": 2.25,
+        "quantity": 60
+      },
+      {
+        "id": 14,
+        "name": "Twix",
+        "image": "/img/images-produits/twix.png",
+        "price": 1.80,
+        "quantity": 130
+      },
+      {
+        "id": 15,
+        "name": "Cacahuete",
+        "image": "/img/images-produits/cacahuete.jpg",
+        "price": 3.00,
+        "quantity": 95
+      },
+      {
+        "id": 16,
+        "name": "Cointreau",
+        "image": "/img/images-produits/cointreau.png",
+        "price": 28.50,
+        "quantity": 20
+      },
+      {
+        "id": 17,
+        "name": "Kitkat",
+        "image": "/img/images-produits/kitkat.png",
+        "price": 1.40,
+        "quantity": 120
+      },
+      {
+        "id": 18,
+        "name": "Redbull Rouge",
+        "image": "/img/images-produits/redbull-rouge.jpg",
+        "price": 2.20,
+        "quantity": 110
+      },
+      {
+        "id": 19,
+        "name": "Winston",
+        "image": "/img/images-produits/winston.jpg",
+        "price": 7.00,
+        "quantity": 50
+      },
+      {
+        "id": 20,
+        "name": "Casberg Pack",
+        "image": "/img/images-produits/casberg-pack.jpg",
+        "price": 35.00,
+        "quantity": 25
+      },
+      {
+        "id": 21,
+        "name": "Corona Premier",
+        "image": "/img/images-produits/Corona-Premier.jpeg",
+        "price": 8.99,
+        "quantity": 45
+      },
+      {
+        "id": 22,
+        "name": "Malteser",
+        "image": "/img/images-produits/malteser.png",
+        "price": 3.75,
+        "quantity": 60
+      },
+      {
+        "id": 23,
+        "name": "Redbull Violet",
+        "image": "/img/images-produits/redbull-violet.jpg",
+        "price": 2.50,
+        "quantity": 90
+      },
+      {
+        "id": 24,
+        "name": "Casberg Small",
+        "image": "/img/images-produits/casberg-small.jpg",
+        "price": 1.99,
+        "quantity": 120
+      },
+      {
+        "id": 25,
+        "name": "Curly",
+        "image": "/img/images-produits/curly.jpg",
+        "price": 1.40,
+        "quantity": 200
+      },
+      {
+        "id": 26,
+        "name": "Marlboro",
+        "image": "/img/images-produits/marlboro.jpg",
+        "price": 9.00,
+        "quantity": 70
+      },
+      {
+        "id": 27,
+        "name": "Rizla",
+        "image": "/img/images-produits/rizla.jpg",
+        "price": 2.30,
+        "quantity": 100
+      }
+    ],
+    "gallery": [
+      {
+        "id": 1,
+        "name": "Champagne Prosecco",
+        "image": "/img/images-gallerie/champagne-prosecco-bottle-with-two-filled-glasses-table-with-citrus-fruis-herbs.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Glass Rose Wine",
+        "image": "/img/images-gallerie/glass-rose-wine-table-with-blurred-restaurant-background.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Italian Cocktail",
+        "image": "/img/images-gallerie/still-life-italian-cocktail.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Beer Bottle Snacks",
+        "image": "/img/images-gallerie/view-beer-bottle-snacks.jpg"
+      }
+    ]
+  }
