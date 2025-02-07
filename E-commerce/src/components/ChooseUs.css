@@ -1,0 +1,51 @@
+.choose-us-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligné à gauche */
+    padding-left: 5vw; /* Marge pour bien placer le texte */
+    color: white;
+    text-align: left;
+  }
+  
+  .choose-us-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('/img/images-gallerie/back.jpg') center/cover no-repeat fixed;
+    z-index: -1;
+  }
+  
+  .content {
+    max-width: 500px; /* Largeur max pour éviter que le texte soit trop étalé */
+    background: rgba(0, 0, 0, 0.5); /* Léger fond sombre pour lisibilité */
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  button {
+    background-color: #3b82f6;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background-color: #2563eb;
+  }
+  

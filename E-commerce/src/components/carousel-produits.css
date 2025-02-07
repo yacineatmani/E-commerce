@@ -1,0 +1,52 @@
+.carousel-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 150px; /* Largeur fixe pour les cartes */
+    margin: 0 auto; /* Centrer les cartes */
+  }
+  
+  .carousel-product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .carousel-product img {
+    width: 100px; /* Largeur fixe pour les images */
+    height: 100px; /* Hauteur fixe pour les images */
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .carousel-product h2 {
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+  
+  .carousel-product p {
+    font-size: 0.75rem;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+  
+  .carousel-product button {
+    background-color: #4299e1;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .carousel-product button:hover {
+    background-color: #3182ce;
+  }
