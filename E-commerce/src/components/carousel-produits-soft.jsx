@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useCart } from './CartContext';
 import './carousel-produits.css';
 
 const CarouselProduitsSoft = () => {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { addToCart, inventory, initializeInventory } = useCart();
 
   useEffect(() => {
     fetch('/src/data.json')
@@ -11,8 +13,12 @@ const CarouselProduitsSoft = () => {
       .then(data => {
         const softProducts = data.products.filter(product => product.category === 'soft');
         setProducts(softProducts);
-      });
-  }, []);
+        if (inventory.length === 0) {
+          initializeInventory(data.products);
+        }
+      })
+      .catch(error => console.error('Erreur lors du chargement des produits:', error));
+  }, [inventory, initializeInventory]);
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
@@ -26,6 +32,11 @@ const CarouselProduitsSoft = () => {
     setCurrentIndex(newIndex);
   };
 
+  const getStockLevel = (productId) => {
+    const item = inventory.find(item => item.id === productId);
+    return item ? item.quantity : 0;
+  };
+
   return (
     <div className="carousel relative w-full overflow-hidden">
       <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
@@ -35,8 +46,14 @@ const CarouselProduitsSoft = () => {
               <img src={product.image} alt={product.name} />
               <h2>{product.name}</h2>
               <p>Price: ${product.price}</p>
-              <p>Quantity: {product.quantity}</p>
-              <button>Ajouter au panier</button>
+              <p>Stock: {getStockLevel(product.id)}</p>
+              <button 
+                onClick={() => addToCart(product)}
+                disabled={getStockLevel(product.id) === 0}
+                className={`add-to-cart-btn ${getStockLevel(product.id) === 0 ? 'disabled' : ''}`}
+              >
+                {getStockLevel(product.id) === 0 ? 'Rupture de stock' : 'Ajouter au panier'}
+              </button>
             </div>
           </div>
         ))}

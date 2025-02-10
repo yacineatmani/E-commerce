@@ -1,104 +1,86 @@
 import React, { useState } from 'react';
-import { Trash2, ShoppingCart, X } from 'lucide-react';
 import { useCart } from './CartContext';
 
-const Cart = () => {
-  const { cartItems, removeFromCart, updateQuantity } = useCart(); // Utilisation correcte du hook
-  const [isOpen, setIsOpen] = useState(false);
+const Cart = ({ isOpen, onClose }) => {
+  const { cart, removeFromCart, updateQuantity, processPayment, clearCart } = useCart();
+  const [amountGiven, setAmountGiven] = useState('');
+  const [change, setChange] = useState(null);
+  const [paymentMessage, setPaymentMessage] = useState('');
 
-  const toggleCart = () => {
-    setIsOpen(!isOpen);
-  };
+  // Calculer le total du panier
+  const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-  };
-
+  // Fonction pour gérer le paiement
   const handlePayment = () => {
-    alert('Passage en caisse - Montant total : ' + calculateTotal() + ' €');
+    const amount = parseFloat(amountGiven);
+    if (isNaN(amount) || amount < totalAmount) {
+      setPaymentMessage('Montant insuffisant.');
+      return;
+    }
+
+    // Traiter le paiement
+    const paymentResult = processPayment(amount);
+
+    if (paymentResult.success) {
+      setChange(amount - totalAmount);
+      setPaymentMessage(`Merci ! Monnaie à rendre : ${(amount - totalAmount).toFixed(2)}€`);
+      
+      // Vider le panier après un paiement réussi
+      clearCart();
+    } else {
+      setPaymentMessage(paymentResult.message);
+    }
+
+    // Fermer le panier après 3 secondes
+    setTimeout(() => {
+      onClose();
+      setPaymentMessage('');
+      setChange(null);
+      setAmountGiven('');
+    }, 3000);
   };
 
   return (
-    <div className="relative">
-      {/* Bouton du panier */}
-      <button 
-        onClick={toggleCart} 
-        className="fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition"
-      >
-        <ShoppingCart size={24} />
-        <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-2 text-xs">
-          {cartItems.reduce((total, item) => total + item.quantity, 0)}
-        </span>
-      </button>
-
-      {/* Volet latéral du panier */}
-      {isOpen && (
-        <div className="fixed inset-y-0 right-0 w-96 bg-white shadow-lg z-50 transform translate-x-0 transition-transform">
-          <div className="p-6 bg-gray-100 flex justify-between items-center">
-            <h2 className="text-2xl font-bold">Votre Panier</h2>
-            <button onClick={toggleCart} className="text-gray-600 hover:text-gray-900">
-              <X size={24} />
-            </button>
+    <>
+      {/* Volet du panier */}
+      <div className={`fixed inset-y-0 right-0 w-96 bg-white shadow-xl transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out z-50`}>
+        <div className="h-full flex flex-col">
+          <div className="p-4 border-b flex justify-between items-center">
+            <h2 className="text-xl font-bold">Panier</h2>
+            <button onClick={onClose} className="text-gray-500 hover:text-gray-700">✕</button>
           </div>
 
-          {cartItems.length === 0 ? (
-            <div className="text-center p-6 text-gray-500">
-              Votre panier est vide
-            </div>
-          ) : (
-            <div className="p-4 space-y-4 overflow-y-auto max-h-[calc(100vh-200px)]">
-              {cartItems.map((item) => (
-                <div key={item.id} className="flex justify-between items-center border-b pb-2">
-                  <div>
-                    <h3 className="font-semibold">{item.name}</h3>
-                    <div className="flex items-center space-x-2">
-                      <button 
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="bg-gray-200 px-2 rounded"
-                      >
-                        -
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button 
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="bg-gray-200 px-2 rounded"
-                      >
-                        +
-                      </button>
-                      <span className="ml-2">
-                        {(item.price * item.quantity).toFixed(2)} €
-                      </span>
-                    </div>
+          <div className="flex-1 overflow-y-auto p-4">
+            {cart.length === 0 ? (
+              <p className="text-gray-500 text-center">Votre panier est vide</p>
+            ) : (
+              cart.map(item => (
+                <div key={item.id} className="flex items-center mb-4 border-b pb-4">
+                  <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                  <div className="ml-4 flex-1">
+                    <h3 className="font-medium">{item.name}</h3>
+                    <p className="text-gray-600">{item.price}€</p>
                   </div>
-                  <button 
-                    onClick={() => removeFromCart(item.id)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <Trash2 size={20} />
-                  </button>
+                  <button onClick={() => removeFromCart(item.id)} className="ml-4 text-red-500 hover:text-red-700">🗑</button>
                 </div>
-              ))}
-            </div>
-          )}
+              ))
+            )}
+          </div>
 
-          {/* Récapitulatif et bouton de paiement */}
-          {cartItems.length > 0 && (
+          {cart.length > 0 && (
             <div className="p-4 border-t">
               <div className="flex justify-between mb-4">
-                <span className="font-bold">Total</span>
-                <span className="font-bold">{calculateTotal()} €</span>
+                <span>Total à payer:</span>
+                <span className="font-bold">{totalAmount.toFixed(2)}€</span>
               </div>
-              <button 
-                onClick={handlePayment}
-                className="w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 transition"
-              >
-                Procéder au paiement
-              </button>
+              <input type="number" placeholder="Montant donné" value={amountGiven} onChange={(e) => setAmountGiven(e.target.value)} />
+              <button onClick={handlePayment}>Payer</button>
+              {paymentMessage && <div>{paymentMessage}</div>}
             </div>
           )}
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 };
 

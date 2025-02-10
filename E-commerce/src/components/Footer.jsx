@@ -57,8 +57,20 @@ const Footer = () => {
             © 2025 <span className="font-semibold">MolenGeek</span>. Tous droits réservés.
           </p>
           <p className="text-sm text-gray-300 mt-2">
-            Conçu par <span className="font-semibold text-blue-500">MolenGeek</span>
+            Conçu par <span className="font-semibold text-blue-500">Yacine</span> et <span className="font-semibold text-blue-500">Lydéric</span>
           </p>
+          <div className="flex justify-center mt-4 space-x-4">
+            {/* Icônes des réseaux sociaux avec FontAwesome */}
+            <a href="https://facebook.com" target="_blank" className="text-blue-500 hover:text-blue-600">
+              <i className="fab fa-facebook-f w-6 h-6"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" className="text-blue-400 hover:text-blue-500">
+              <i className="fab fa-twitter w-6 h-6"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" className="text-pink-500 hover:text-pink-600">
+              <i className="fab fa-instagram w-6 h-6"></i>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
