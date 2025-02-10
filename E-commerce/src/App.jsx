@@ -10,21 +10,27 @@ import Cart from './components/Cart';
 import './App.css';
 
 function App() {
-  const [isCartOpen, setIsCartOpen] = useState(false); // État pour gérer l'ouverture du panier
+  const [isCartOpen, setIsCartOpen] = useState(false); // Gérer l'ouverture du panier
+  const [selectedCategory, setSelectedCategory] = useState("soft"); // Catégorie par défaut
 
   return (
     <CartProvider>
-      {/* Navbar avec la fonction pour ouvrir le panier */}
+      {/* Navbar avec ouverture du panier */}
       <Navbar onCartToggle={() => setIsCartOpen(true)} />
 
       {/* Contenu principal */}
       <CarouselGallerie />
-      <CarouselCategorie />
-      <CarouselProduits />
+      
+      {/* Sélection de la catégorie */}
+      <CarouselCategorie onSelectCategory={setSelectedCategory} />
+
+      {/* Produits de la catégorie sélectionnée */}
+      <CarouselProduits selectedCategory={selectedCategory} />
+
       <ChooseUs />
       <Footer />
 
-      {/* Cart avec l'état partagé */}
+      {/* Cart avec gestion de l'affichage */}
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </CartProvider>
   );
