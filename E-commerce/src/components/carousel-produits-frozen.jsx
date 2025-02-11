@@ -6,7 +6,7 @@ const CarouselProduitsFrozen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch('/src/data.json')
+    fetch('../public/data.json')
       .then(response => response.json())
       .then(data => {
         const frozenProducts = data.products.filter(product => product.category === 'frozen');

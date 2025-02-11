@@ -9,7 +9,7 @@ const CarouselGallerie = ({ category }) => {
     // Reset l'index quand la catégorie change
     setCurrentIndex(0);
     
-    fetch('../public/data.json')
+    fetch('/data.json')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Échec du chargement des données');
@@ -34,7 +34,7 @@ const CarouselGallerie = ({ category }) => {
     
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000);
+    }, 4000);
     
     return () => clearInterval(interval);
   }, [currentIndex, gallery.length]);

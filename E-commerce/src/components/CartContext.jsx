@@ -5,7 +5,7 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [inventory, setInventory] = useState([]);
-  const [isInventoryLoaded, setIsInventoryLoaded] = useState(false); // ✅ Suivi du chargement
+  const [isInventoryLoaded, setIsInventoryLoaded] = useState(false);
 
   // Chargement initial depuis le localStorage ou le fichier data.json
   useEffect(() => {
@@ -15,19 +15,21 @@ export const CartProvider = ({ children }) => {
         const storedCart = localStorage.getItem('cart');
 
         if (storedInventory) {
+          console.log('Chargement depuis localStorage:', JSON.parse(storedInventory));
           setInventory(JSON.parse(storedInventory));
+          setIsInventoryLoaded(true);
         } else {
-          const response = await fetch('/data.json');
+          const response = await fetch('../public/data.json');
           const data = await response.json();
+          console.log('Chargement depuis data.json:', data.products);
           setInventory(data.products);
           localStorage.setItem('inventory', JSON.stringify(data.products));
+          setIsInventoryLoaded(true);
         }
 
         if (storedCart) {
           setCart(JSON.parse(storedCart));
         }
-
-        setIsInventoryLoaded(true); // ✅ Indiquer que l'inventaire est prêt
       } catch (error) {
         console.error('Erreur de chargement:', error);
       }
@@ -51,7 +53,8 @@ export const CartProvider = ({ children }) => {
           ? { ...item, quantity: item.quantity - 1 }
           : item
       );
-
+      
+      console.log('Nouvel inventaire après ajout:', newInventory);
       localStorage.setItem('inventory', JSON.stringify(newInventory));
       return newInventory;
     });
@@ -86,6 +89,7 @@ export const CartProvider = ({ children }) => {
             ? { ...item, quantity: item.quantity + cartItem.quantity }
             : item
         );
+        console.log('Nouvel inventaire après retrait:', newInventory);
         localStorage.setItem('inventory', JSON.stringify(newInventory));
         return newInventory;
       });
@@ -98,7 +102,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // Mettre à jour la quantité d'un produit dans le panier
+  // Mettre à jour la quantité
   const updateQuantity = (productId, newQuantity) => {
     const cartItem = cart.find(item => item.id === productId);
     
@@ -118,6 +122,7 @@ export const CartProvider = ({ children }) => {
           ? { ...item, quantity: item.quantity - quantityDifference }
           : item
       );
+      console.log('Nouvel inventaire après mise à jour de la quantité:', newInventory);
       localStorage.setItem('inventory', JSON.stringify(newInventory));
       return newInventory;
     });
@@ -137,14 +142,20 @@ export const CartProvider = ({ children }) => {
 
   // Vider le panier
   const clearCart = () => {
+    // Restaurer le stock
     const newInventory = inventory.map(item => {
       const cartItem = cart.find(ci => ci.id === item.id);
-      return cartItem ? { ...item, quantity: item.quantity + cartItem.quantity } : item;
+      if (cartItem) {
+        return { ...item, quantity: item.quantity + cartItem.quantity };
+      }
+      return item;
     });
 
+    console.log('Inventaire après vidage du panier:', newInventory);
     setInventory(newInventory);
     localStorage.setItem('inventory', JSON.stringify(newInventory));
 
+    // Vider le panier
     setCart([]);
     localStorage.setItem('cart', JSON.stringify([]));
   };
@@ -171,7 +182,7 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider value={{
       cart,
       inventory,
-      isInventoryLoaded, // ✅ Ajouté pour savoir si l'inventaire est prêt
+      isInventoryLoaded,
       addToCart,
       removeFromCart,
       updateQuantity,

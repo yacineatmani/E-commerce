@@ -1,78 +1,153 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCart } from './CartContext';
 import './carousel-produits.css';
 
-const CarouselProduits = ({ selectedCategory }) => {
+const CarouselProduits = ({ selectedCategory = 'Soft Drinks' }) => {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { addToCart, inventory, isInventoryLoaded } = useCart(); // Récupère aussi l'état du chargement
+  const { addToCart, inventory, initializeInventory } = useCart();
+  const itemsToShow = 5;
 
-  // Attendre que l'inventaire soit chargé avant de filtrer les produits
+  // Mapping des catégories pour la conversion
+  const categoryMapping = {
+    'Soft Drinks': 'soft',
+    'Cigarettes': 'cigarette',
+    'Mystery': 'mistery',
+    'Liquor': 'liquor',
+    'food': 'food',
+    'Frozen': 'frozen'
+  };
+
   useEffect(() => {
-    if (!isInventoryLoaded) return;
-  
-    // 🔥 Nouvelle approche : On force React à détecter les changements en créant une copie de l'inventaire
-    const updatedInventory = [...inventory];
-  
-    const filteredProducts = selectedCategory === ""
-      ? updatedInventory  // Si "toutes", afficher tous les produits
-      : updatedInventory.filter(product => product.category === selectedCategory);
-  
+    fetch('../public/data.json')
+      .then(response => response.json())
+      .then(data => {
+        if (inventory.length === 0) {
+          initializeInventory(data.products);
+        }
+      })
+      .catch(error => console.error('Erreur lors du chargement des produits:', error));
+  }, [initializeInventory]);
+
+  useEffect(() => {
+    // Mettre à jour les produits quand la catégorie change
+    const categoryToFilter = categoryMapping[selectedCategory] || selectedCategory.toLowerCase();
+    console.log('Filtering for category:', categoryToFilter); // Pour le débogage
+    
+    const filteredProducts = inventory.filter(product => {
+      return product.category === categoryToFilter;
+    });
+    
+    console.log('Filtered products:', filteredProducts); // Pour le débogage
     setProducts(filteredProducts);
-    console.log(`🔍 Produits mis à jour pour ${selectedCategory}:`, filteredProducts);
-  }, [inventory, selectedCategory, isInventoryLoaded]);
-  
+    setCurrentIndex(0); // Réinitialiser l'index à chaque changement de catégorie
+  }, [selectedCategory, inventory]);
 
   const prevSlide = () => {
-    setCurrentIndex(current => (current === 0 ? products.length - 1 : current - 1));
+    setCurrentIndex(current => Math.max(current - 1, 0));
   };
 
   const nextSlide = () => {
-    setCurrentIndex(current => (current === products.length - 1 ? 0 : current + 1));
+    setCurrentIndex(current => {
+      const maxIndex = Math.max(0, products.length - itemsToShow);
+      return Math.min(current + 1, maxIndex);
+    });
   };
 
-  // Afficher un message de chargement tant que l'inventaire n'est pas prêt
-  if (!isInventoryLoaded) {
-    return <p className="text-center text-gray-500">Chargement des produits...</p>;
-  }
+  const getStockLevel = (productId) => {
+    const item = inventory.find(item => item.id === productId);
+    return item ? item.quantity : 0;
+  };
+
+  const getCategoryTitle = () => {
+    const titles = {
+      'soft': 'Nos Articles',
+      'cigarette': 'Nos Cigarettes',
+      'mistery': 'Produits Mystère',
+      'liquor': 'Nos Boissons Alcoolisées',
+      'food': 'Nos Snacks',
+      'frozen': 'Nos Produits Surgelés'
+    };
+    
+    const mappedCategory = categoryMapping[selectedCategory] || selectedCategory.toLowerCase();
+    return titles[mappedCategory] || selectedCategory;
+  };
 
   return (
-    <div className="relative w-full h-96">
-      <div className="w-full h-full relative overflow-hidden">
+    <div className="relative py-8 bg-white/90 backdrop-blur-sm shadow-lg rounded-lg mx-4 my-6">
+      <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">{getCategoryTitle()}</h2>
+      <div className="carousel relative w-full overflow-hidden px-4">
         <div 
-          className="absolute w-full h-full flex transition-transform duration-500"
-          style={{ width: `${products.length * 100}%`, transform: `translateX(-${(currentIndex * 100) / products.length}%)` }}
+          className="flex transition-transform duration-500" 
+          style={{ 
+            transform: `translateX(-${(currentIndex * (100 / itemsToShow))}%)`,
+            gap: '1rem'
+          }}
         >
-         
-            {products.map((product) => (
-  <div key={`${product.id}-${product.quantity}`} className="relative" style={{ width: `${100 / products.length}%` }}>
-              <div className="p-4">
-                <img src={product.image} alt={product.name} className="w-full h-64 object-cover rounded-lg" />
-                <div className="mt-4 bg-white p-4 rounded-lg">
-                  <h3 className="text-xl font-bold">{product.name}</h3>
-                  <p className="text-gray-600">{product.description}</p>
-                  <p className="text-blue-600 font-bold mt-2">{product.price}€</p>
-                  <p>Stock: {inventory.find(item => item.id === product.id)?.quantity ?? 'Non disponible'}</p>
-                  <button 
-                    onClick={() => addToCart(product)}
-                    disabled={inventory.find(item => item.id === product.id)?.quantity === 0}
-                    className={`add-to-cart-btn ${inventory.find(item => item.id === product.id)?.quantity === 0 ? 'disabled' : ''}`}
-                  >
-                    {inventory.find(item => item.id === product.id)?.quantity === 0 ? 'Rupture de stock' : 'Ajouter au panier'}
-                  </button>
+          {products.map(product => (
+            <div 
+              key={product.id} 
+              className="carousel-item"
+              style={{ 
+                flex: `0 0 ${100 / itemsToShow}%`,
+                maxWidth: `${100 / itemsToShow}%`
+              }}
+            >
+              <div className="carousel-product bg-white rounded-lg shadow-md p-4 transform transition-transform duration-300 hover:scale-105">
+                <div className="relative pb-4">
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                  <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                    <p className="text-sm font-semibold text-gray-800">{product.price}€</p>
+                  </div>
                 </div>
+                <h3 className="text-lg font-bold text-gray-800 mb-2">{product.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">Stock: {getStockLevel(product.id)}</p>
+                <button 
+                  onClick={() => addToCart(product)}
+                  disabled={getStockLevel(product.id) === 0}
+                  className={`w-full py-2 px-4 rounded-lg transition-colors duration-300 ${
+                    getStockLevel(product.id) === 0 
+                      ? 'bg-gray-300 cursor-not-allowed text-gray-500' 
+                      : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md'
+                  }`}
+                >
+                  {getStockLevel(product.id) === 0 ? 'Rupture de stock' : 'Ajouter au panier'}
+                </button>
               </div>
             </div>
           ))}
         </div>
+        {products.length > itemsToShow && (
+          <>
+            <button 
+              onClick={prevSlide} 
+              disabled={currentIndex === 0}
+              className={`absolute top-1/2 -left-2 transform -translate-y-1/2 w-10 h-10 rounded-full shadow-lg z-10 flex items-center justify-center ${
+                currentIndex === 0 
+                  ? 'bg-gray-300 cursor-not-allowed' 
+                  : 'bg-white hover:bg-gray-100'
+              }`}
+            >
+              <span className="text-gray-800">←</span>
+            </button>
+            <button 
+              onClick={nextSlide}
+              disabled={currentIndex >= products.length - itemsToShow}
+              className={`absolute top-1/2 -right-2 transform -translate-y-1/2 w-10 h-10 rounded-full shadow-lg z-10 flex items-center justify-center ${
+                currentIndex >= products.length - itemsToShow 
+                  ? 'bg-gray-300 cursor-not-allowed' 
+                  : 'bg-white hover:bg-gray-100'
+              }`}
+            >
+              <span className="text-gray-800">→</span>
+            </button>
+          </>
+        )}
       </div>
-
-      <button onClick={prevSlide} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full">
-        ←
-      </button>
-      <button onClick={nextSlide} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full">
-        →
-      </button>
     </div>
   );
 };

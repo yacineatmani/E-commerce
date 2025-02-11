@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useCart } from './CartContext';
 import './carousel-produits.css';
 
 const CarouselProduitsLiquor = () => {
@@ -6,7 +7,7 @@ const CarouselProduitsLiquor = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch('/src/data.json')
+    fetch('../public/data.json')
       .then(response => response.json())
       .then(data => {
         const liquorProducts = data.products.filter(product => product.category === 'liquor');

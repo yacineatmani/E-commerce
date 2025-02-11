@@ -1,0 +1,621 @@
+{
+  
+    "products": [
+      {
+          "id": "1",
+          "category": "food",
+          "name": "Bifi",
+          "price": 2.99,
+          "quantity": 1200,
+          "image": "/img/images-produits/bifi.jpg"
+      },
+      {
+          "id": "2",
+          "category": "liquor",
+          "name": "Champagne Moutet",
+          "price": 55.00,
+          "quantity": 30,
+          "image": "/img/images-produits/champagne-moutet.jpg"
+      },
+      {
+          "id": "3",
+          "category": "liquor",
+          "name": "Delirium",
+          "price": 3.49,
+          "quantity": 70,
+          "image": "/img/images-produits/delirium.jpg"
+      },
+      {
+          "id": "4",
+          "category": "food",
+          "name": "Mars",
+          "price": 1.29,
+          "quantity": 150,
+          "image": "/img/images-produits/mars.png"
+      },
+      {
+          "id": "5",
+          "category": "food",
+          "name": "Salami",
+          "price": 4.50,
+          "quantity": 45,
+          "image": "/img/images-produits/salami.jpg"
+      },
+      {
+          "id": "6",
+          "category": "food",
+          "name": "Boost",
+          "price": 2.25,
+          "quantity": 60,
+          "image": "/img/images-produits/boost.png"
+      },
+      {
+          "id": "7",
+          "category": "liquor",
+          "name": "Château Lafitte",
+          "price": 120.00,
+          "quantity": 15,
+          "image": "/img/images-produits/chateau-lafitte.jpg"
+      },
+      {
+          "id": "8",
+          "category": "liquor",
+          "name": "Heineken Small",
+          "price": 5.99,
+          "quantity": 80,
+          "image": "/img/images-produits/heineken-small.jpg"
+      },
+      {
+          "id": "9",
+          "category": "soft",
+          "name": "Redbull Original",
+          "price": 2.10,
+          "quantity": 100,
+          "image": "/img/images-produits/redbill-original.jpg"
+      },
+      {
+          "id": "10",
+          "category": "food",
+          "name": "Bounty",
+          "price": 1.79,
+          "quantity": 110,
+          "image": "/img/images-produits/bounty.png"
+      },
+      {
+          "id": "11",
+          "category": "soft",
+          "name": "Coca Double",
+          "price": 1.60,
+          "quantity": 200,
+          "image": "/img/images-produits/coca-double.jpg"
+      },
+      {
+          "id": "12",
+          "category": "cigarette",
+          "name": "Kamel",
+          "price": 6.50,
+          "quantity": 40,
+          "image": "/img/images-produits/kamel.jpg"
+      },
+      {
+          "id": "13",
+          "category": "soft",
+          "name": "Redbull Light",
+          "price": 2.25,
+          "quantity": 60,
+          "image": "/img/images-produits/redbull-light.jpg"
+      },
+      {
+          "id": "14",
+          "category": "food",
+          "name": "Twix",
+          "price": 1.80,
+          "quantity": 130,
+          "image": "/img/images-produits/twix.png"
+      },
+      {
+          "id": "15",
+          "category": "food",
+          "name": "Cacahuete",
+          "price": 3.00,
+          "quantity": 95,
+          "image": "/img/images-produits/cacahuete.jpg"
+      },
+      {
+          "id": "16",
+          "category": "liquor",
+          "name": "Cointreau",
+          "price": 28.50,
+          "quantity": 20,
+          "image": "/img/images-produits/cointreau.png"
+      },
+      {
+          "id": "17",
+          "category": "food",
+          "name": "Kitkat",
+          "price": 1.40,
+          "quantity": 120,
+          "image": "/img/images-produits/kitkat.png"
+      },
+      {
+          "id": "18",
+          "category": "soft",
+          "name": "Redbull Rouge",
+          "price": 2.20,
+          "quantity": 110,
+          "image": "/img/images-produits/redbull-rouge.jpg"
+      },
+      {
+          "id": "19",
+          "category": "cigarette",
+          "name": "Winston",
+          "price": 7.00,
+          "quantity": 50,
+          "image": "/img/images-produits/winston.jpg"
+      },
+      {
+          "id": "20",
+          "category": "liquor",
+          "name": "Casberg Pack",
+          "price": 35.00,
+          "quantity": 25,
+          "image": "/img/images-produits/casberg-pack.jpg"
+      },
+      {
+          "id": "21",
+          "category": "liquor",
+          "name": "Corona Premier",
+          "price": 8.99,
+          "quantity": 45,
+          "image": "/img/images-produits/Corona-Premier.jpeg"
+      },
+      {
+          "id": "22",
+          "category": "food",
+          "name": "Malteser",
+          "price": 3.75,
+          "quantity": 60,
+          "image": "/img/images-produits/malteser.png"
+      },
+      {
+          "id": "23",
+          "category": "soft",
+          "name": "Redbull Violet",
+          "price": 2.50,
+          "quantity": 90,
+          "image": "/img/images-produits/redbull-violet.jpg"
+      },
+      {
+          "id": "24",
+          "category": "liquor",
+          "name": "Casberg Small",
+          "price": 1.99,
+          "quantity": 120,
+          "image": "/img/images-produits/casberg-small.jpg"
+      },
+      {
+          "id": "25",
+          "category": "food",
+          "name": "Curly",
+          "price": 1.40,
+          "quantity": 200,
+          "image": "/img/images-produits/curly.jpg"
+      },
+      {
+          "id": "26",
+          "category": "cigarette",
+          "name": "Marlboro",
+          "price": 9.00,
+          "quantity": 70,
+          "image": "/img/images-produits/marlboro.jpg"
+      },
+      {
+          "id": "27",
+          "category": "cigarette",
+          "name": "Rizla",
+          "price": 2.30,
+          "quantity": 100,
+          "image": "/img/images-produits/rizla.jpg"
+      },
+      {
+          "id": "28",
+          "category": "mistery",
+          "name": "Ampoule Lot",
+          "price": 4.50,
+          "quantity": 120,
+          "image": "/img/images-produits/ampoule-lot.jpg"
+      },
+      {
+          "id": "29",
+          "category": "mistery",
+          "name": "Anniversaire Bougie",
+          "price": 3.20,
+          "quantity": 150,
+          "image": "/img/images-produits/anniversaire-bougie.jpg"
+      },
+      {
+          "id": "30",
+          "category": "mistery",
+          "name": "Canard",
+          "price": 7.99,
+          "quantity": 40,
+          "image": "/img/images-produits/canard.jpg"
+      },
+      {
+          "id": "31",
+          "category": "frozen",
+          "name": "Glace",
+          "price": 2.99,
+          "quantity": 60,
+          "image": "/img/images-produits/galce.jpg"
+      },
+      {
+          "id": "32",
+          "category": "mistery",
+          "name": "Bic",
+          "price": 1.20,
+          "quantity": 130,
+          "image": "/img/images-produits/bic.png"
+      },
+      {
+          "id": "33",
+          "category": "liquor",
+          "name": "Casberg Pack",
+          "price": 12.50,
+          "quantity": 40,
+          "image": "/img/images-produits/casberg-pack.jpg"
+      },
+      {
+          "id": "34",
+          "category": "frozen",
+          "name": "Dame Blanche",
+          "price": 5.99,
+          "quantity": 80,
+          "image": "/img/images-produits/dame-blanche.jpg"
+      },
+      {
+          "id": "35",
+          "category": "mistery",
+          "name": "Pamper",
+          "price": 8.50,
+          "quantity": 20,
+          "image": "/img/images-produits/pamper.jpg"
+      },
+      {
+          "id": "36",
+          "category": "cigarette",
+          "name": "Bic Lot",
+          "price": 15.99,
+          "quantity": 50,
+          "image": "/img/images-produits/bic-lot.jpg"
+      },
+      {
+          "id": "37",
+          "category": "liquor",
+          "name": "Delirium",
+          "price": 3.49,
+          "quantity": 70,
+          "image": "/img/images-produits/delirium.jpg"
+      },
+      {
+          "id": "38",
+          "category": "food",
+          "name": "Kitkat",
+          "price": 1.40,
+          "quantity": 120,
+          "image": "/img/images-produits/kitkat.png"
+      },
+      {
+          "id": "39",
+          "category": "mistery",
+          "name": "Pamper Maxi",
+          "price": 12.00,
+          "quantity": 60,
+          "image": "/img/images-produits/pamper-maxi.jpg"
+      },
+      {
+          "id": "40",
+          "category": "mistery",
+          "name": "Savon",
+          "price": 3.99,
+          "quantity": 90,
+          "image": "/img/images-produits/savon.jpg"
+      },
+      {
+          "id": "41",
+          "category": "frozen",
+          "name": "Frite",
+          "price": 25.00,
+          "quantity": 30,
+          "image": "/img/images-produits/frite.jpg"
+      },
+      {
+          "id": "42",
+          "category": "liquor",
+          "name": "Corona Extra",
+          "price": 7.99,
+          "quantity": 40,
+          "image": "/img/images-produits/corona-extra.jpg"
+      },
+      {
+          "id": "43",
+          "category": "food",
+          "name": "Salami",
+          "price": 7.99,
+          "quantity": 40,
+          "image": "/img/images-produits/salami.jpg"
+      },
+      {
+          "id": "44",
+          "category": "food",
+          "name": "Sandwich",
+          "price": 9.99,
+          "quantity": 40,
+          "image": "/img/images-produits/sandwich.jpg"
+      },
+      {
+          "id": "45",
+          "category": "liquor",
+          "name": "Heineken",
+          "price": 5.99,
+          "quantity": 80,
+          "image": "/img/images-produits/heineken-small.jpg"
+      },
+      {
+        "id": "46",
+        "category": "food",
+        "name": "Acid",
+        "price": 2.50,
+        "quantity": 100,
+        "image": "/img/images-produits/acid.jpg"
+      },
+      {
+        "id": "47",
+        "category": "food",
+        "name": "Barbecue",
+        "price": 6.99,
+        "quantity": 50,
+        "image": "/img/images-produits/barbecue.jpg"
+      },
+      {
+        "id": "48",
+        "category": "food",
+        "name": "Bolo",
+        "price": 4.99,
+        "quantity": 80,
+        "image": "/img/images-produits/bolo.jpg"
+      },
+      {
+        "id": "49",
+        "category": "mistery",
+        "name": "Bougie",
+        "price": 3.20,
+        "quantity": 60,
+        "image": "/img/images-produits/bougie.jpg"
+      },
+      {
+        "id": "50",
+        "category": "cigarette",
+        "name": "Briquet",
+        "price": 1.50,
+        "quantity": 150,
+        "image": "/img/images-produits/briquet.jpg"
+      },
+      {
+        "id": "51",
+        "category": "soft",
+        "name": "Coca",
+        "price": 1.60,
+        "quantity": 200,
+        "image": "/img/images-produits/coca.jpg"
+      },
+      {
+        "id": "52",
+        "category": "soft",
+        "name": "Coca Light",
+        "price": 1.60,
+        "quantity": 200,
+        "image": "/img/images-produits/cocalight.jpg"
+      },
+      {
+        "id": "53",
+        "category": "soft",
+        "name": "Coca Zero",
+        "price": 1.60,
+        "quantity": 200,
+        "image": "/img/images-produits/cocazero.jpg"
+      },
+      {
+        "id": "54",
+        "category": "frozen",
+        "name": "Croquette",
+        "price": 3.99,
+        "quantity": 90,
+        "image": "/img/images-produits/croquette.jpg"
+      },
+      {
+        "id": "55",
+        "category": "food",
+        "name": "Delacre",
+        "price": 5.50,
+        "quantity": 60,
+        "image": "/img/images-produits/delacre.jpg"
+      },
+      {
+        "id": "56",
+        "category": "cigarette",
+        "name": "Dunhill",
+        "price": 10.00,
+        "quantity": 50,
+        "image": "/img/images-produits/dunhill.jpg"
+      },
+      {
+        "id": "57",
+        "category": "soft",
+        "name": "Eau",
+        "price": 1.00,
+        "quantity": 300,
+        "image": "/img/images-produits/eau.jpg"
+      },
+      {
+        "id": "58",
+        "category": "food",
+        "name": "Epinard",
+        "price": 2.00,
+        "quantity": 80,
+        "image": "/img/images-produits/epinard.jpg"
+      },
+      {
+        "id": "59",
+        "category": "soft",
+        "name": "Fanta Exotic",
+        "price": 2.50,
+        "quantity": 120,
+        "image": "/img/images-produits/fantaexotic.jpg"
+      },
+      {
+        "id": "60",
+        "category": "soft",
+        "name": "Fanta Mister",
+        "price": 2.50,
+        "quantity": 120,
+        "image": "/img/images-produits/fantamister.jpg"
+      },
+      {
+        "id": "61",
+        "category": "soft",
+        "name": "Fanta Original",
+        "price": 2.50,
+        "quantity": 120,
+        "image": "/img/images-produits/fantaoriginal.jpg"
+      },
+      {
+        "id": "62",
+        "category": "food",
+        "name": "Franchipane",
+        "price": 4.50,
+        "quantity": 90,
+        "image": "/img/images-produits/franchipane.jpg"
+      },
+      {
+        "id": "63",
+        "category": "food",
+        "name": "Fromage",
+        "price": 6.99,
+        "quantity": 50,
+        "image": "/img/images-produits/fromage.jpg"
+      },
+      {
+        "id": "64",
+        "category": "food",
+        "name": "Fruit de mer",
+        "price": 15.99,
+        "quantity": 30,
+        "image": "/img/images-produits/fruit-mer.jpg"
+      },
+      {
+        "id": "65",
+        "category": "soft",
+        "name": "Fruitie",
+        "price": 3.50,
+        "quantity": 100,
+        "image": "/img/images-produits/fruiti.jpg"
+      },
+      {
+        "id": "66",
+        "category": "food",
+        "name": "Hamburger",
+        "price": 4.99,
+        "quantity": 60,
+        "image": "/img/images-produits/hamburger.jpg"
+      },
+      {
+        "id": "67",
+        "category": "food",
+        "name": "Haribo",
+        "price": 3.99,
+        "quantity": 100,
+        "image": "/img/images-produits/haribo.jpg"
+      }
+    ],
+    "gallery": [
+      {
+        "id": 1,
+        "name": "Champagne Prosecco",
+        "image": "/img/images-gallerie/champagne-prosecco-bottle-with-two-filled-glasses-table-with-citrus-fruis-herbs.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Glass Rose Wine",
+        "image": "/img/images-gallerie/glass-rose-wine-table-with-blurred-restaurant-background.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Italian Cocktail",
+        "image": "/img/images-gallerie/still-life-italian-cocktail.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Chocolateur",
+        "image": "/img/images-gallerie/chocolateur.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Italian Cocktail",
+        "image": "/img/images-gallerie/still-life-italian-cocktail.jpg"
+      },
+      {
+        "id": 6,
+        "name": "santé",
+        "image": "/img/images-gallerie/santé.jpg"
+      },
+      {
+        "id": 7,
+        "name": "christmas",
+        "image": "/img/images-gallerie/chrim.jpg"
+      },
+      {
+        "id": 8,
+        "name": "celebrate",
+        "image": "/img/images-gallerie/celebrat.jpg"
+      },
+      {
+        "id": 9,
+        "name": "chips",
+        "image": "/img/images-gallerie/chips-doight.jpg"
+      }
+    ],
+    "categories": [
+    {
+        "id": 1,
+        "name": "Cigarettes",
+        "image": "/img/images-categorie/cigarette.png"
+      },
+      {
+        "id": 2,
+        "name": "food",
+        "image": "/img/images-categorie/food.png"
+      },
+      {
+        "id": 3,
+        "name": "Frozen",
+        "image": "/img/images-categorie/frozen.png"
+      },
+      {
+        "id": 4,
+        "name": "Liquor",
+        "image": "/img/images-categorie/liquor.png"
+      },
+      {
+        "id": 5,
+        "name": "Mystery",
+        "image": "/img/images-categorie/mistery.png"
+      },
+      {
+        "id": 6,
+        "name": "Soft Drinks",
+        "image": "/img/images-categorie/soft.png"
+      }
+    ]
+  }
+  

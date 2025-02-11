@@ -8,7 +8,7 @@ const CarouselProduitsSoft = () => {
   const { addToCart, inventory, initializeInventory } = useCart();
 
   useEffect(() => {
-    fetch('/src/data.json')
+    fetch('../public/data.json')
       .then(response => response.json())
       .then(data => {
         const softProducts = data.products.filter(product => product.category === 'soft');
@@ -18,7 +18,14 @@ const CarouselProduitsSoft = () => {
         }
       })
       .catch(error => console.error('Erreur lors du chargement des produits:', error));
-  }, [inventory, initializeInventory]);
+  }, [initializeInventory, inventory.length]);
+
+  useEffect(() => {
+    // Mettre à jour les produits lorsque l'inventaire change
+    const softProducts = inventory.filter(product => product.category === 'soft');
+    setProducts(softProducts);
+    console.log(`🔍 Produits mis à jour pour soft:`, softProducts);
+  }, [inventory]);
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
@@ -37,6 +44,10 @@ const CarouselProduitsSoft = () => {
     return item ? item.quantity : 0;
   };
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
+
   return (
     <div className="carousel relative w-full overflow-hidden">
       <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
@@ -48,7 +59,7 @@ const CarouselProduitsSoft = () => {
               <p>Price: ${product.price}</p>
               <p>Stock: {getStockLevel(product.id)}</p>
               <button 
-                onClick={() => addToCart(product)}
+                onClick={() => handleAddToCart(product)}
                 disabled={getStockLevel(product.id) === 0}
                 className={`add-to-cart-btn ${getStockLevel(product.id) === 0 ? 'disabled' : ''}`}
               >

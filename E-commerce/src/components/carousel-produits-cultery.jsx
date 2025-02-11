@@ -6,7 +6,7 @@ const CarouselProduitsCultery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch('/src/data.json')
+    fetch('../public/data.json')
       .then(response => response.json())
       .then(data => {
         const culteryProducts = data.products.filter(product => product.category === 'cultery');
